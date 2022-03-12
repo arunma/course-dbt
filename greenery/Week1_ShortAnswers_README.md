@@ -68,7 +68,7 @@ SELECT * FROM average_delivery_time
 
 ---
 
-## Question 4: How many users many 1 purchase? 2 purchases? 3 or more?
+## Question 4: How many users have only made one purchase? Two purchases? Three+ purchases?
 
 ```SQL
 
@@ -103,7 +103,7 @@ SELECT * FROM bucketed_users
 ---
 
 
-## Question 5: How many unique sessions do we have per hour
+## Question 5: On average, how many unique sessions do we have per hour?
 
 ```SQL
 WITH session_counts AS (
