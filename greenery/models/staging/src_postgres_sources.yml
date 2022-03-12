@@ -1,0 +1,35 @@
+version: 2
+
+sources:
+  - name: src_postgres
+    database: dbt
+    schema: public
+    tables:
+      - name: addresses
+        description: Addresses of the users
+        
+      - name: events
+        description: Event information
+        loaded_at_field: created_at
+
+      - name: order_items
+        description: Ordered items info
+
+      - name: orders
+        description: Order info
+        loaded_at_field: created_at
+
+      - name: products
+        description: List of products and their prices in the inventory
+
+      - name: promos
+        description: Promos info
+
+      - name: superheroes
+        description: Demographics about each superhero such as name, hair color, height and weight. 
+
+      - name: users
+        description: Demographic info of the users
+
+    freshness:
+      warn_after: {count: 24, period: hour}

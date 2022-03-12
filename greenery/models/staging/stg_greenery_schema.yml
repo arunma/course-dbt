@@ -1,0 +1,66 @@
+version: 2
+
+models:
+    - name: addresses
+      description: Addresses of the users
+      columns:
+        - name: address_id
+          tests:
+            - unique
+            - not_null
+        - name: zipcode
+          tests:
+            - not_null
+            - zipcode
+      
+    - name: events
+      description: Event information
+      columns:
+          - name: event_id
+            tests:
+              - unique
+              - not_null
+
+    - name: order_items
+      description: Ordered items info
+
+    - name: orders
+      description: Order info
+      loaded_at_field: created_at
+      columns:
+          - name: order_id
+            tests:
+              - unique
+              - not_null
+
+    - name: products
+      description: List of products and their prices in the inventory
+      columns:
+        - name: product_id
+          tests:
+            - unique
+            - not_null
+
+    - name: promos
+      description: Promos info
+      columns:
+        - name: promo_id
+          tests:
+            - unique
+            - not_null
+
+    - name: superheroes
+      description: Demographics about each superhero such as name, hair color, height and weight. 
+      columns:
+        - name: id
+          tests:
+            - unique
+            - not_null
+
+    - name: users
+      description: Demographic info of the users
+      columns:
+        - name: user_id
+          tests:
+            - unique
+            - not_null
