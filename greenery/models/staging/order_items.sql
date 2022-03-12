@@ -1,11 +1,15 @@
-{{ config (materialized='table') }}
+{{ config (
+      materialized='table',
+      unique_key="user_id ||'-'||product_id"
+    ) 
+}}
 
-with order_items as (
-  select
+WITH order_items AS (
+  SELECT
     order_id,
     product_id,
     quantity
-  from {{ source ('src_postgres', 'order_items') }}
+  FROM {{ source ('src_postgres', 'order_items') }}
 )
 
-select * from order_items
+SELECT * FROM order_items

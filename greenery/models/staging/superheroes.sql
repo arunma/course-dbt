@@ -1,7 +1,11 @@
-{{ config (materialized='table') }}
+{{ config (
+      materialized='table',
+      unique_key='id'
+    ) 
+}}
 
-with superheroes as (
-  select
+WITH superheroes AS (
+  SELECT
     id,
     name,
     gender,
@@ -15,7 +19,7 @@ with superheroes as (
     weight,
     created_at,
     updated_at
-  from {{ source ('src_postgres', 'superheroes') }}
+  FROM {{ source ('src_postgres', 'superheroes') }}
 )
 
-select * from superheroes
+SELECT * FROM superheroes

@@ -1,7 +1,11 @@
-{{ config (materialized='table') }}
+{{ config (
+      materialized='table',
+      unique_key='user_id'
+    ) 
+}}
 
-with users as (
-  select
+WITH users AS (
+  SELECT
     user_id,
     first_name,
     last_name,
@@ -10,7 +14,7 @@ with users as (
     created_at,
     updated_at,
     address_id
-  from {{ source ('src_postgres', 'users') }}
+  FROM {{ source ('src_postgres', 'users') }}
 )
 
-select * from users
+SELECT * FROM users

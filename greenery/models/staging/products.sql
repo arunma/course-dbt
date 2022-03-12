@@ -1,12 +1,16 @@
-{{ config (materialized='table') }}
+{{ config (
+      materialized='table',
+      unique_key='product_id'
+    ) 
+}}
 
-with products as (
-  select
+WITH products AS (
+  SELECT
     product_id,
     name,
     price,
     inventory
-  from {{ source ('src_postgres', 'products') }}
+  FROM {{ source ('src_postgres', 'products') }}
 )
 
-select * from products
+SELECT * FROM products

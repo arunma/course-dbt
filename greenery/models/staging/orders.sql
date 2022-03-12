@@ -1,7 +1,11 @@
-{{ config (materialized='table') }}
+{{ config (
+      materialized='table',
+      unique_key='order_id'
+    ) 
+}}
 
-with orders as (
-  select 
+WITH orders AS (
+  SELECT 
     order_id,
     user_id,
     promo_id,
@@ -15,7 +19,7 @@ with orders as (
     estimated_delivery_at,
     delivered_at,
     status
-  from {{ source ('src_postgres', 'orders') }}
+  FROM {{ source ('src_postgres', 'orders') }}
 )
 
-select * from orders
+SELECT * FROM orders

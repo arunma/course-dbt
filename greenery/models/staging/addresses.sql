@@ -1,13 +1,17 @@
-{{ config(materialized='table') }}
+{{ config (
+      materialized='table',
+      unique_key='address_id'
+    ) 
+}}
 
-with addresses as (
-  select
+WITH addresses AS (
+  SELECT
     address_id,
     address,
     zipcode,
     state,
     country
-  from {{ source('src_postgres', 'addresses') }}
+  FROM {{ source('src_postgres', 'addresses') }}
 )
 
-select * from addresses
+SELECT * FROM addresses

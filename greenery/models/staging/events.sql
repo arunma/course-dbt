@@ -1,7 +1,11 @@
-{{ config (materialized='table') }}
+{{ config (
+      materialized='table',
+      unique_key='event_id'
+    ) 
+}}
 
-with events as (
-  select 
+WITH events AS (
+  SELECT 
     event_id,
     session_id,
     user_id,
@@ -10,7 +14,7 @@ with events as (
     event_type,
     order_id,
     product_id
-  from {{ source('src_postgres', 'events') }}
+  FROM {{ source('src_postgres', 'events') }}
 )
 
-select * from events
+SELECT * FROM events
