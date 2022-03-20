@@ -1,0 +1,32 @@
+version: 2
+
+models:
+    - name: dim_users_addresses
+      description: Materialized user-address join
+      columns:
+        - name: user_id
+          tests:
+            - unique
+            - not_null
+        - name: address_id
+          tests:
+            - unique
+            - not_null
+        - name: zipcode
+          tests:
+            - not_null
+            - zipcode
+
+    - name: fct_orders
+      description: Materialized order table
+      columns:
+        - name: promo_id
+          tests:
+            - valid_promo
+        - name: estimated_delivery_at
+          tests:
+            - not_null_for_delivered
+        - name: shipping_service
+          tests:
+            - accepted_values_or_null:
+                values: ('fedex', 'usps', 'ups', 'dhl')
