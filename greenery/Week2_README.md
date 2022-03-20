@@ -205,6 +205,8 @@ ORDER BY 2 desc
 
 ## Question 7: Your stakeholders at Greenery want to understand the state of the data each day. Explain how you would ensure these tests are passing regularly and how you would alert stakeholders about bad data getting through.
 
-### Answer: Adding data tests as a task in the Ingestion pipeline after the DBT models are run would fail the pipeline.  Alerts could be configured for pipeline failures.
+### Answer: 
+
+Adding data tests as a task in the Ingestion pipeline after the DBT models are run would fail the pipeline.  Alerts could be configured for pipeline failures.
 
 ---
