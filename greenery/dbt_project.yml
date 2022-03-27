@@ -34,7 +34,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   greenery:
     # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
     staging: 
       +materialized: view #defaulting to view. could be overriden within the model
+    marts:
+      +materialized: table
+
+  post-hook:  "GRANT SELECT ON {{ this }} TO REPORTING"
+  on-run-end: "GRANT SELECT ON {{ target.schema }} to REPORTING"
+
+
