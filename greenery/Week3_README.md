@@ -74,3 +74,6 @@ ON i.product_id=o.product_id
 ```
 ---
 
+### DAG
+
+![Week 3 DAG](Week3_DAG.png)
